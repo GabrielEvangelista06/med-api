@@ -1,0 +1,1 @@
+alter table consultas add cancelada boolean not null default false;

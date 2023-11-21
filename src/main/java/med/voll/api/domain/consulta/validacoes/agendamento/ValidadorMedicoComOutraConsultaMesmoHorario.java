@@ -14,7 +14,7 @@ public class ValidadorMedicoComOutraConsultaMesmoHorario implements ValidadorAge
 
 	public void validar(DadosAgendamentoConsulta dados)
 	{
-		var medicoPossuiOutraConsultaMesmoHorario = repository.existsByMedicoIdAndDataAndMotivoCancelamentoIsNull(dados.idMedico(), dados.data());
+		var medicoPossuiOutraConsultaMesmoHorario = this.repository.existsByMedicoIdAndDataAndMotivoCancelamentoIsNull(dados.idMedico(), dados.data());
 
 		if (medicoPossuiOutraConsultaMesmoHorario)
 		{

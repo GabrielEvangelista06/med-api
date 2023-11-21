@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 public class ValidadorMedicoAtivo implements ValidadorAgendamentoConsulta
 {
 	@Autowired
-
 	private MedicoRepository repository;
 
 	public void validar(DadosAgendamentoConsulta dados)
@@ -24,7 +23,7 @@ public class ValidadorMedicoAtivo implements ValidadorAgendamentoConsulta
 
 		if (!medicoEstaAtivo)
 		{
-			throw new ValidacaoException("Consulta não pode ser agendada com médico que não trabaçha mais aqui");
+			throw new ValidacaoException("Consulta não pode ser agendada com médico que não trabalha mais na clínica.");
 		}
 	}
 }

@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
+
 @RestController
 @RequestMapping("medicos")
 @SecurityRequirement(name = "bearer-key")
@@ -23,11 +25,11 @@ public class MedicoController
 
 	@PostMapping
 	@Transactional
-	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroMedico dados, UriComponentsBuilder uriBuilder)
+	public ResponseEntity<DadosDetalhamentoMedico> cadastrar(@RequestBody @Valid DadosCadastroMedico dados, UriComponentsBuilder uriBuilder)
 	{
-		var medico = this.service.cadastrar(dados);
+		DadosDetalhamentoMedico medico = this.service.cadastrar(dados);
 
-		var uri = uriBuilder.path("/medicos/{id}").buildAndExpand(medico.id()).toUri();
+		URI uri = uriBuilder.path("/medicos/{id}").buildAndExpand(medico.id()).toUri();
 
 		return ResponseEntity.created(uri).body(medico);
 	}

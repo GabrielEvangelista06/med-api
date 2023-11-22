@@ -13,20 +13,20 @@ public class MedicoService
 
 	public DadosDetalhamentoMedico cadastrar(DadosCadastroMedico dados)
 	{
-		var medico = new Medico(dados);
-		repository.save(medico);
+		Medico medico = new Medico(dados);
+		this.repository.save(medico);
 
 		return new DadosDetalhamentoMedico(medico);
 	}
 
 	public Page<DadosListagemMedico> listar(Pageable paginacao)
 	{
-		return repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
+		return this.repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
 	}
 
 	public DadosDetalhamentoMedico atualizar(DadosAtualizacaoMedico dados)
 	{
-		var medico = repository.getReferenceById(dados.id());
+		Medico medico = this.repository.getReferenceById(dados.id());
 		medico.atualizarInformacoes(dados);
 
 		return new DadosDetalhamentoMedico(medico);
@@ -34,13 +34,13 @@ public class MedicoService
 
 	public void excluir(Long id)
 	{
-		var medico = repository.getReferenceById(id);
+		Medico medico = this.repository.getReferenceById(id);
 		medico.excluir();
 	}
 
 	public DadosDetalhamentoMedico detalhar(Long id)
 	{
-		Medico medico = repository.getReferenceById(id);
+		Medico medico = this.repository.getReferenceById(id);
 
 		return new DadosDetalhamentoMedico(medico);
 	}

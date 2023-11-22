@@ -6,6 +6,8 @@ import med.voll.api.domain.consulta.DadosAgendamentoConsulta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class ValidadorPacienteSemOutraConsultaMesmaData implements ValidadorAgendamentoConsulta
 {
@@ -14,9 +16,9 @@ public class ValidadorPacienteSemOutraConsultaMesmaData implements ValidadorAgen
 
 	public void validar(DadosAgendamentoConsulta dados)
 	{
-		var primeiroHorario = dados.data().withHour(7);
-		var ultimoHorario = dados.data().withHour(18);
-		var pacientePossuiOutraConsultaNoDia = repository.existsByPacienteIdAndDataBetween(dados.idPaciente(), primeiroHorario,
+		LocalDateTime primeiroHorario = dados.data().withHour(7);
+		LocalDateTime ultimoHorario = dados.data().withHour(18);
+		boolean pacientePossuiOutraConsultaNoDia = this.repository.existsByPacienteIdAndDataBetween(dados.idPaciente(), primeiroHorario,
 				ultimoHorario);
 
 		if (pacientePossuiOutraConsultaNoDia)

@@ -12,9 +12,9 @@ public class ValidadorHorarioAntecedencia implements ValidadorAgendamentoConsult
 {
 	public void validar(DadosAgendamentoConsulta dados)
 	{
-		var dataConsulta = dados.data();
-		var agora = LocalDateTime.now();
-		var diferencaEmMinutos = Duration.between(agora, dataConsulta).toMinutes();
+		LocalDateTime dataConsulta = dados.data();
+		LocalDateTime agora = LocalDateTime.now();
+		long diferencaEmMinutos = Duration.between(agora, dataConsulta).toMinutes();
 
 		if (diferencaEmMinutos < 30)
 		{

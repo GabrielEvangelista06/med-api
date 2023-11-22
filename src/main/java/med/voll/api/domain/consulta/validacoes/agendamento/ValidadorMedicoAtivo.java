@@ -19,7 +19,7 @@ public class ValidadorMedicoAtivo implements ValidadorAgendamentoConsulta
 			return;
 		}
 
-		var medicoEstaAtivo = repository.findAtivoById(dados.idMedico());
+		boolean medicoEstaAtivo = this.repository.findAtivoById(dados.idMedico());
 
 		if (!medicoEstaAtivo)
 		{

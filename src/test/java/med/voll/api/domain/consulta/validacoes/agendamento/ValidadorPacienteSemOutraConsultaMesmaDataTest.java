@@ -39,7 +39,7 @@ class ValidadorPacienteSemOutraConsultaMesmaDataTest
 
 	@Test
 	@DisplayName("Não deve lançar exceção se o paciente não tiver outra consulta no mesmo dia")
-	void validarPacienteSemOutraConsultaMesmaData()
+	void validarCenario1()
 	{
 		// Arrange
 		var dadosAgendamentoConsulta = this.criarDadosAgendamentoConsulta();
@@ -53,7 +53,7 @@ class ValidadorPacienteSemOutraConsultaMesmaDataTest
 
 	@Test
 	@DisplayName("Deve lançar exceção se o paciente tiver outra consulta no mesmo dia")
-	void validarPacienteComOutraConsultaMesmaData()
+	void validarCenario2()
 	{
 		// Arrange
 		var dadosAgendamentoConsulta = this.criarDadosAgendamentoConsulta();

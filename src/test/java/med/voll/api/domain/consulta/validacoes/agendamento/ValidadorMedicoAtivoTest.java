@@ -40,7 +40,7 @@ class ValidadorMedicoAtivoTest
 
 	@Test
 	@DisplayName("Não deve lançar exceção se a consulta for agendada com médico ativo")
-	void validarConsultaComMedicoAtivo()
+	void validarCenario1()
 	{
 		// Arrange
 		var dadosAgendamentoConsulta = this.criarDadosAgendamentoConsulta();
@@ -53,7 +53,7 @@ class ValidadorMedicoAtivoTest
 
 	@Test
 	@DisplayName("Deve lançar exceção se a consulta for agendada com médico inativo")
-	void validarConsultaComMedicoInativo()
+	void validarCenario2()
 	{
 		// Arrange
 		var dadosAgendamentoConsulta = this.criarDadosAgendamentoConsulta();
@@ -66,7 +66,7 @@ class ValidadorMedicoAtivoTest
 
 	@Test
 	@DisplayName("Não deve lançar exceção se a consulta for agendada sem médico")
-	void validarConsultaSemMedico()
+	void validarCenario3()
 	{
 		// Arrange
 		var dadosAgendamentoConsulta = new DadosAgendamentoConsulta(null, 2L, LocalDateTime.now().plusDays(1), Especialidade.CARDIOLOGIA);

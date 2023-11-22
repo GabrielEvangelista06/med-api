@@ -101,7 +101,7 @@ class MedicoControllerTest
 	}
 
 	@Test
-	@DisplayName("Deve devolver codigo http 400 quando informacoes estao invalidas")
+	@DisplayName("Deve devolver codigo http 400 quando informacoes estão invalidas")
 	@WithMockUser
 	void cadastrarCenario1() throws Exception
 	{
@@ -151,7 +151,7 @@ class MedicoControllerTest
 	@Test
 	@DisplayName("Deve devolver código HTTP 200 e listar médicos")
 	@WithMockUser
-	void listarCenario1() throws Exception
+	void listar() throws Exception
 	{
 		// Arrange
 		DadosCadastroMedico dadosCadastroMedico2 = this.criarDadosCadastroMedico("curupira", "curupira@gmail.com", "11786429418", "654321",

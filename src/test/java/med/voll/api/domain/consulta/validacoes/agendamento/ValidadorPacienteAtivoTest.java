@@ -39,7 +39,7 @@ class ValidadorPacienteAtivoTest
 
 	@Test
 	@DisplayName("Não deve lançar exceção se o paciente estiver ativo")
-	void validarPacienteAtivo()
+	void validarCenario1()
 	{
 		// Arrange
 		var dadosAgendamentoConsulta = this.criarDadosAgendamentoConsulta();
@@ -52,7 +52,7 @@ class ValidadorPacienteAtivoTest
 
 	@Test
 	@DisplayName("Deve lançar exceção se o paciente não estiver ativo")
-	void validarPacienteInativo()
+	void validarCenario2()
 	{
 		// Arrange
 		var dadosAgendamentoConsulta = this.criarDadosAgendamentoConsulta();

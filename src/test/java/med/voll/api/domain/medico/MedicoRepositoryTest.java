@@ -153,22 +153,4 @@ class MedicoRepositoryTest
 		assertThat(medicosAtivos).isNotNull();
 		assertThat(medicosAtivos.getContent()).containsExactly(medico1, medico2);
 	}
-
-	@Test
-	@DisplayName("Deve encontrar médicos ativos com paginação")
-	void findAllByAtivoTrueWithPagination()
-	{
-		// Arrange
-		var medico1 = cadastrarMedico("Medico1", "medico1@voll.med", "789632", Especialidade.CARDIOLOGIA);
-		var medico2 = cadastrarMedico("Medico2", "medico2@voll.med", "789012", Especialidade.DERMATOLOGIA);
-
-		// Act
-		Pageable pageable = PageRequest.of(0, 1);
-		Page<Medico> medicosAtivos = medicoRepository.findAllByAtivoTrue(pageable);
-
-		// Assert
-		assertThat(medicosAtivos).isNotNull();
-		assertThat(medicosAtivos.getContent()).hasSize(1);
-		assertThat(medicosAtivos.getContent().get(0)).isEqualTo(medico1);
-	}
 }

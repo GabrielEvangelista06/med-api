@@ -40,7 +40,7 @@ class ValidadorMedicoComOutraConsultaMesmoHorarioTest
 
 	@Test
 	@DisplayName("Não deve lançar exceção se o médico não possuir outra consulta no mesmo horário")
-	void validarMedicoSemOutraConsultaNoMesmoHorario()
+	void validarCenario1()
 	{
 		// Arrange
 		var dadosAgendamentoConsulta = this.criarDadosAgendamentoConsulta();
@@ -54,7 +54,7 @@ class ValidadorMedicoComOutraConsultaMesmoHorarioTest
 
 	@Test
 	@DisplayName("Deve lançar exceção se o médico possuir outra consulta no mesmo horário")
-	void validarMedicoComOutraConsultaNoMesmoHorario()
+	void validarCenario2()
 	{
 		// Arrange
 		var dadosAgendamentoConsulta = this.criarDadosAgendamentoConsulta();

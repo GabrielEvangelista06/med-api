@@ -21,43 +21,39 @@ public class PacienteController
 {
 
 	@Autowired
-	private PacienteRepository repository;
+	private PacienteService service;
 
 	@PostMapping
 	@Transactional
 	public ResponseEntity<DadosDetalhamentoPaciente> cadastrar(@RequestBody @Valid DadosCadastroPaciente dados,
 			UriComponentsBuilder uriBuilder)
 	{
-		Paciente paciente = new Paciente(dados);
-		repository.save(paciente);
+		DadosDetalhamentoPaciente paciente = this.service.cadastrar(dados);
 
-		URI uri = uriBuilder.path("/pacientes/{id}").buildAndExpand(paciente.getId()).toUri();
-		return ResponseEntity.created(uri).body(new DadosDetalhamentoPaciente(paciente));
+		URI uri = uriBuilder.path("/pacientes/{id}").buildAndExpand(paciente.id()).toUri();
+		return ResponseEntity.created(uri).body(paciente);
 	}
 
 	@GetMapping
 	public ResponseEntity<Page<DadosListagemPaciente>> listar(@PageableDefault(size = 10, sort = { "nome" }) Pageable paginacao)
 	{
-		Page<DadosListagemPaciente> page = repository.findAllByAtivoTrue(paginacao).map(DadosListagemPaciente::new);
-		return ResponseEntity.ok(page);
+		return ResponseEntity.ok(this.service.listar(paginacao));
 	}
 
 	@PutMapping
 	@Transactional
 	public ResponseEntity<DadosDetalhamentoPaciente> atualizar(@RequestBody @Valid DadosAtualizacaoPaciente dados)
 	{
-		Paciente paciente = repository.getReferenceById(dados.id());
-		paciente.atualizarInformacoes(dados);
 
-		return ResponseEntity.ok(new DadosDetalhamentoPaciente(paciente));
+		return ResponseEntity.ok(this.service.atualizar(dados));
 	}
 
 	@DeleteMapping("/{id}")
 	@Transactional
 	public ResponseEntity excluir(@PathVariable Long id)
 	{
-		Paciente paciente = repository.getReferenceById(id);
-		paciente.excluir();
+
+		this.service.excluir(id);
 
 		return ResponseEntity.noContent().build();
 	}
@@ -65,8 +61,7 @@ public class PacienteController
 	@GetMapping("/{id}")
 	public ResponseEntity<DadosDetalhamentoPaciente> detalhar(@PathVariable Long id)
 	{
-		Paciente paciente = repository.getReferenceById(id);
-		return ResponseEntity.ok(new DadosDetalhamentoPaciente(paciente));
+		return ResponseEntity.ok(this.service.detalhar(id));
 	}
 
 }

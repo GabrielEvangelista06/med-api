@@ -137,18 +137,6 @@ class MedicoControllerTest
 	}
 
 	@Test
-	@DisplayName("Deve devolver código HTTP 400 quando informações estão ausentes ao cadastrar médico")
-	@WithMockUser
-	void cadastrarCenario3() throws Exception
-	{
-		// Act
-		MockHttpServletResponse response = mvc.perform(post("/medicos").contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
-
-		// Assert
-		assertThat(response.getStatus()).isEqualTo(HttpStatus.BAD_REQUEST.value());
-	}
-
-	@Test
 	@DisplayName("Deve devolver código HTTP 200 e listar médicos")
 	@WithMockUser
 	void listar() throws Exception

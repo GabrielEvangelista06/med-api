@@ -30,7 +30,7 @@ public class Consulta
 
 	private LocalDateTime data;
 
-	private boolean cancelada;
+	private Boolean cancelada;
 
 	@Column(name = "motivo_cancelamento")
 	@Enumerated(EnumType.STRING)

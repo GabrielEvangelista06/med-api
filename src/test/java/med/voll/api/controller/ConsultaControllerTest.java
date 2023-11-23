@@ -60,7 +60,7 @@ class ConsultaControllerTest
 		LocalDateTime data = LocalDateTime.now().plusHours(1);
 		Especialidade especialidade = Especialidade.CARDIOLOGIA;
 
-		DadosDetalhamentoConsulta dadosDetalhamento = new DadosDetalhamentoConsulta(null, 2l, 5l, data);
+		DadosDetalhamentoConsulta dadosDetalhamento = new DadosDetalhamentoConsulta(null, 2L, 5l, data);
 
 		when(this.agendaDeConsultas.agendar(any())).thenReturn(dadosDetalhamento);
 

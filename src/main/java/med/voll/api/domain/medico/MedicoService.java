@@ -40,8 +40,6 @@ public class MedicoService
 
 	public DadosDetalhamentoMedico detalhar(Long id)
 	{
-		Medico medico = this.repository.getReferenceById(id);
-
-		return new DadosDetalhamentoMedico(medico);
+		return new DadosDetalhamentoMedico(this.repository.getReferenceById(id));
 	}
 }
